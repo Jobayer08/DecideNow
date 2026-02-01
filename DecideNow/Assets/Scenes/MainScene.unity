@@ -261,8 +261,8 @@ CanvasRenderer:
 --- !u!1 &72373993
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7958736102996555763, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+  m_PrefabInstance: {fileID: 6760681766810184660}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -279,8 +279,8 @@ GameObject:
 --- !u!224 &72373994
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+  m_PrefabInstance: {fileID: 6760681766810184660}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72373993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -298,8 +298,8 @@ RectTransform:
 --- !u!114 &72373995
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 430349685104766063, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+  m_PrefabInstance: {fileID: 6760681766810184660}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72373993}
   m_Enabled: 1
@@ -387,11 +387,156 @@ MonoBehaviour:
 --- !u!222 &72373996
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 593860001929920093, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+  m_PrefabInstance: {fileID: 6760681766810184660}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72373993}
   m_CullTransparentMesh: 1
+--- !u!1 &106397547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106397549}
+  - component: {fileID: 106397548}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &106397548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106397547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc737ac6192f51b4816a9cc88caab46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioText: {fileID: 72373995}
+  scoreText: {fileID: 409387448}
+  timerText: {fileID: 518374904}
+  scenarios:
+  - scenarioText: A fire has broken out in a hospital ward.
+    optionA: Evacuate patients
+    optionB: Call fire brigade
+    optionC: Ignore
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: A patient collapses in the ER.
+    optionA: Call nurse
+    optionB: Start CPR
+    optionC: Wait
+    correctOption: 2
+    riskLevel: 2
+  - scenarioText: Two accident victims arrive, but only one bed is free.
+    optionA: Treat more injured patient
+    optionB: Treat less injured patient
+    optionC: Wait for another bed
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: An ambulance is stuck in traffic with a critical patient.
+    optionA: Change route
+    optionB: Wait patiently
+    optionC: Stop and call hospital
+    correctOption: 1
+    riskLevel: 2
+  - scenarioText: A child is choking in a restaurant.
+    optionA: Perform Heimlich maneuver
+    optionB: Call parents
+    optionC: Give water
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: A patient shows allergic reaction to medicine.
+    optionA: Stop medication
+    optionB: Increase dose
+    optionC: Ignore symptoms
+    correctOption: 1
+    riskLevel: 2
+  - scenarioText: Power goes out during a minor surgery.
+    optionA: Use backup generator
+    optionB: Stop surgery immediately
+    optionC: Continue in darkness
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: A nurse reports suspicious behavior near ICU.
+    optionA: Investigate immediately
+    optionB: Ignore report
+    optionC: Delay investigation
+    correctOption: 1
+    riskLevel: 2
+  - scenarioText: A patient refuses urgent treatment.
+    optionA: Explain risks clearly
+    optionB: Force treatment
+    optionC: Discharge patient
+    correctOption: 1
+    riskLevel: 2
+  - scenarioText: An injured person is bleeding heavily on the street.
+    optionA: Apply pressure to wound
+    optionB: Move the person
+    optionC: Take photos
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: Multiple patients arrive after a bus accident.
+    optionA: Start triage
+    optionB: Treat randomly
+    optionC: Wait for more staff
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: A patient shows signs of heart attack.
+    optionA: Give painkiller
+    optionB: Call emergency cardiac team
+    optionC: Ask patient to rest
+    correctOption: 2
+    riskLevel: 3
+  - scenarioText: A hospital database is hacked during emergency hours.
+    optionA: Disconnect system
+    optionB: Ignore and continue
+    optionC: Shut down hospital
+    correctOption: 1
+    riskLevel: 2
+  - scenarioText: Dr. Israt from the Institute of Applied Health Sciences is leading
+      an emergency response team during a sudden outbreak in the campus clinic. Medical
+      supplies are limited, and patients are increasing rapidly.
+    optionA: Prioritize critical patients and allocate resources carefully
+    optionB: Treat patients on a first-come-first-serve basis
+    optionC: Wait for external support before taking action
+    correctOption: 1
+    riskLevel: 3
+  - scenarioText: During a night emergency at the Institute of Applied Health Sciences,
+      Dr. Israt must decide whether to continue treatment with limited staff or transfer
+      patients to another hospital under risky conditions.
+    optionA: Continue treatment with available staff
+    optionB: Transfer all patients immediately
+    optionC: Delay decision until morning
+    correctOption: 1
+    riskLevel: 2
+  optionAText: {fileID: 45561558}
+  optionBText: {fileID: 1559687078}
+  optionCText: {fileID: 356482395}
+--- !u!4 &106397549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106397547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9754885, y: -0.025352255, z: -0.009412353}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &177177689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1426,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1812745148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106397548}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerDecision
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1812745148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873813367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106397548}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerDecision
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1873813367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,7 +1692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1916009256}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 106397548}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerDecision
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1916009256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1743,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916009253}
   m_CullTransparentMesh: 1
+--- !u!1001 &6760681766810184660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1427529640}
+    m_Modifications:
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958736102996555763, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_Name
+      value: 'ScenarioText '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1569,3 +1847,4 @@ SceneRoots:
   - {fileID: 177177692}
   - {fileID: 1427529640}
   - {fileID: 574956188}
+  - {fileID: 106397549}
