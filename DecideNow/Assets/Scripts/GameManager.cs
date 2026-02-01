@@ -9,18 +9,30 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
 
-    private int score = 0;
-    private float timeLeft = 10f;
-
     [Header("Scenario System")]
-public List<Scenario> scenarios;
+    public List<Scenario> scenarios;
+    private Scenario currentScenario;
 
-private Scenario currentScenario;
+    [Header("Option Texts")]
+    public TextMeshProUGUI optionAText;
+    public TextMeshProUGUI optionBText;
+    public TextMeshProUGUI optionCText;
 
-     [Header("Option Texts")]
-public TextMeshProUGUI optionAText;
-public TextMeshProUGUI optionBText;
-public TextMeshProUGUI optionCText;
+    [Header("Timer Settings")]
+    public float maxTime = 10f;
+    private float currentTime;
+
+    [Header("AI")]
+    public AIManager aiManager;
+    private float decisionStartTime;
+
+    private int score = 0;
+
+[Header("Player Profile")]
+public PlayerProfile playerProfile;
+
+[Header("Feedback UI")]
+public TextMeshProUGUI feedbackText;
 
 
 
@@ -32,63 +44,121 @@ public TextMeshProUGUI optionCText;
 
     void Update()
     {
-        HandleTimer();
+        UpdateTimer();
     }
 
     void LoadScenario()
-{
-    currentScenario = scenarios[Random.Range(0, scenarios.Count)];
-
-    scenarioText.text = currentScenario.scenarioText;
-
-    optionAText.text = currentScenario.optionA;
-    optionBText.text = currentScenario.optionB;
-    optionCText.text = currentScenario.optionC;
-}
-
-
-
-    void HandleTimer()
     {
-        timeLeft -= Time.deltaTime;
-        timerText.text = "Time: " + Mathf.Ceil(timeLeft);
+         feedbackText.text = "";
+        currentScenario = scenarios[Random.Range(0, scenarios.Count)];
 
-        if (timeLeft <= 0)
-        {
-            GameOver();
-        }
+        scenarioText.text = currentScenario.scenarioText;
+        optionAText.text = currentScenario.optionA;
+        optionBText.text = currentScenario.optionB;
+        optionCText.text = currentScenario.optionC;
+
+        // Base time from risk
+        if (currentScenario.riskLevel == 3)
+            maxTime = 6f;
+        else if (currentScenario.riskLevel == 2)
+            maxTime = 8f;
+        else
+            maxTime = 10f;
+
+        // AI adjustment
+        ApplyAIDifficulty();
+
+        ResetTimer();
+        decisionStartTime = currentTime;
     }
 
-    public void PlayerDecision(int choice)
-{
-    if (choice == currentScenario.correctOption)
+    void UpdateTimer()
     {
-        score += 10;
+        currentTime -= Time.deltaTime;
+        timerText.text = "Time: " + Mathf.Ceil(currentTime);
+
+        if (currentTime <= 0f)
+            TimeUp();
     }
-    else
+
+    void TimeUp()
     {
         score -= 5;
-    }
-
-    UpdateScore();
-    ResetTimer();
-    LoadScenario();
-}
-
-
-    void UpdateScore()
-    {
-        scoreText.text = "Score: " + score;
+        UpdateScore();
+        LoadScenario();
     }
 
     void ResetTimer()
     {
-        timeLeft = 10f;
+        currentTime = maxTime;
     }
 
-    void GameOver()
+    public void PlayerDecision(int choice)
+{
+    if (currentTime <= 0f)
+        return;
+
+    float decisionTime = decisionStartTime - currentTime;
+    bool isCorrect = choice == currentScenario.correctOption;
+
+    if (isCorrect)
     {
-        scenarioText.text = "Time's up!\nGame Over.";
-        Time.timeScale = 0f;
+        score += 10;
+        ShowFeedback(true);
     }
+    else
+    {
+        score -= 5;
+        ShowFeedback(false);
+    }
+
+    aiManager.RecordDecision(
+        decisionTime,
+        isCorrect,
+        currentScenario.riskLevel
+    );
+
+    playerProfile.UpdateProfile(
+        decisionTime,
+        isCorrect,
+        currentScenario.riskLevel
+    );
+
+    UpdateScore();
+    Invoke(nameof(LoadScenario), 1.5f);
+}
+
+
+void ShowFeedback(bool success)
+{
+    if (success)
+    {
+        feedbackText.text = "✔ Correct Decision!\n" + currentScenario.explanation;
+        feedbackText.color = Color.green;
+    }
+    else
+    {
+        feedbackText.text = "✖ Wrong Decision!\n" + currentScenario.explanation;
+        feedbackText.color = Color.red;
+    }
+
+    CancelInvoke();
+}
+
+    void ApplyAIDifficulty()
+    {
+        float multiplier = aiManager.GetDifficultyMultiplier();
+        maxTime = Mathf.Clamp(maxTime / multiplier, 4f, 12f);
+    }
+
+    void UpdateScore()
+{
+    scoreText.text = "Score: " + score;
+
+    if (score >= 0)
+        scoreText.color = Color.white;
+    else
+        scoreText.color = Color.red;
+}
+
 }
