@@ -122,6 +122,125 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &43859499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43859502}
+  - component: {fileID: 43859501}
+  - component: {fileID: 43859500}
+  - component: {fileID: 43859503}
+  m_Layer: 0
+  m_Name: ScenarioVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &43859500
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43859499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b08b8c2b7061758f0851d4bc25eeadbe, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &43859501
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43859499}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.4528302, g: 0.040583827, b: 0.040583827, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &43859502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43859499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43859503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43859499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f360f1a1c82dbba90b9095de3c364558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &45561556
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -424,6 +543,7 @@ MonoBehaviour:
   scenarioText: {fileID: 72373995}
   scoreText: {fileID: 409387448}
   timerText: {fileID: 518374904}
+  feedbackText: {fileID: 112900082}
   scenarios:
   - scenarioText: A fire has broken out in a hospital ward.
     optionA: Evacuate patients
@@ -431,78 +551,132 @@ MonoBehaviour:
     optionC: Ignore
     correctOption: 1
     riskLevel: 3
+    explanation: Fire spreads quickly and smoke is extremely dangerous. Patients
+      often cannot move on their own, so immediate evacuation is the top priority.
+      Calling the fire brigade is important, but delaying evacuation can cost lives.
+    animationTrigger: 
+    scenarioType: 1
   - scenarioText: A patient collapses in the ER.
     optionA: Call nurse
     optionB: Start CPR
     optionC: Wait
     correctOption: 2
     riskLevel: 2
+    explanation: Sudden collapse may indicate cardiac arrest. Immediate CPR helps
+      maintain blood flow to the brain and increases survival chances. Waiting or
+      calling others first wastes critical time.
+    animationTrigger: 
+    scenarioType: 3
   - scenarioText: Two accident victims arrive, but only one bed is free.
     optionA: Treat more injured patient
     optionB: Treat less injured patient
     optionC: Wait for another bed
     correctOption: 1
     riskLevel: 3
+    explanation: Medical triage principles prioritize patients with life-threatening
+      injuries. Treating the most critical patient first maximizes overall survival.
+    animationTrigger: 
+    scenarioType: 2
   - scenarioText: An ambulance is stuck in traffic with a critical patient.
     optionA: Change route
     optionB: Wait patiently
     optionC: Stop and call hospital
     correctOption: 1
     riskLevel: 2
+    explanation: "For critical patients, time is vital. Changing to a faster route
+      reduces delays and improves the patient\u2019s chance of survival."
+    animationTrigger: 
+    scenarioType: 0
   - scenarioText: A child is choking in a restaurant.
     optionA: Perform Heimlich maneuver
     optionB: Call parents
     optionC: Give water
     correctOption: 1
     riskLevel: 3
+    explanation: Choking means the airway is blocked. The Heimlich maneuver is a
+      proven life-saving technique. Giving water can worsen the blockage.
+    animationTrigger: 
+    scenarioType: 0
   - scenarioText: A patient shows allergic reaction to medicine.
     optionA: Stop medication
     optionB: Increase dose
     optionC: Ignore symptoms
     correctOption: 1
     riskLevel: 2
+    explanation: Continuing a medicine during an allergic reaction can be dangerous.
+      The first and most important step is to stop the medication immediately.
+    animationTrigger: 
+    scenarioType: 0
   - scenarioText: Power goes out during a minor surgery.
     optionA: Use backup generator
     optionB: Stop surgery immediately
     optionC: Continue in darkness
     correctOption: 1
     riskLevel: 3
+    explanation: Hospitals are required to have backup power systems. Continuing
+      surgery using the backup generator is safer than stopping suddenly.
+    animationTrigger: 
+    scenarioType: 3
   - scenarioText: A nurse reports suspicious behavior near ICU.
     optionA: Investigate immediately
     optionB: Ignore report
     optionC: Delay investigation
     correctOption: 1
     riskLevel: 2
+    explanation: The ICU is a highly sensitive area. Ignoring suspicious activity
+      may risk patient safety and hospital security.
+    animationTrigger: 
+    scenarioType: 4
   - scenarioText: A patient refuses urgent treatment.
     optionA: Explain risks clearly
     optionB: Force treatment
     optionC: Discharge patient
     correctOption: 1
     riskLevel: 2
+    explanation: Patients have the right to make informed decisions. Forcing treatment
+      is unethical, but clearly explaining risks helps patients understand the consequences.
+    animationTrigger: 
+    scenarioType: 0
   - scenarioText: An injured person is bleeding heavily on the street.
     optionA: Apply pressure to wound
     optionB: Move the person
     optionC: Take photos
     correctOption: 1
     riskLevel: 3
+    explanation: Severe bleeding can quickly lead to shock or death. Applying direct
+      pressure is the fastest and most effective first-aid response.
+    animationTrigger: 
+    scenarioType: 2
   - scenarioText: Multiple patients arrive after a bus accident.
     optionA: Start triage
     optionB: Treat randomly
     optionC: Wait for more staff
     correctOption: 1
     riskLevel: 3
+    explanation: In mass-casualty situations, triage is essential. It ensures that
+      patients who need urgent care receive it first, saving more lives overall.
+    animationTrigger: 
+    scenarioType: 2
   - scenarioText: A patient shows signs of heart attack.
     optionA: Give painkiller
     optionB: Call emergency cardiac team
     optionC: Ask patient to rest
     correctOption: 2
     riskLevel: 3
+    explanation: Heart attacks require specialized and immediate medical intervention.
+      Painkillers alone do not treat the underlying problem.
+    animationTrigger: 
+    scenarioType: 3
   - scenarioText: A hospital database is hacked during emergency hours.
     optionA: Disconnect system
     optionB: Ignore and continue
     optionC: Shut down hospital
     correctOption: 1
     riskLevel: 2
+    explanation: Disconnecting the system helps prevent further data damage and protects
+      patient information during a cyberattack.
+    animationTrigger: 
+    scenarioType: 4
   - scenarioText: Dr. Israt from the Institute of Applied Health Sciences is leading
       an emergency response team during a sudden outbreak in the campus clinic. Medical
       supplies are limited, and patients are increasing rapidly.
@@ -511,6 +685,11 @@ MonoBehaviour:
     optionC: Wait for external support before taking action
     correctOption: 1
     riskLevel: 3
+    explanation: Effective leadership in emergencies means using limited resources
+      wisely. Treating critical patients first reduces mortality and improves overall
+      outcomes.
+    animationTrigger: 
+    scenarioType: 0
   - scenarioText: During a night emergency at the Institute of Applied Health Sciences,
       Dr. Israt must decide whether to continue treatment with limited staff or transfer
       patients to another hospital under risky conditions.
@@ -519,13 +698,21 @@ MonoBehaviour:
     optionC: Delay decision until morning
     correctOption: 1
     riskLevel: 2
+    explanation: Transferring patients during unstable conditions can increase risk.
+      Continuing treatment with available staff ensures immediate care and reduces
+      danger.
+    animationTrigger: 
+    scenarioType: 3
   optionAText: {fileID: 45561558}
   optionBText: {fileID: 1559687078}
   optionCText: {fileID: 356482395}
+  optionPanel: {fileID: 656266715}
   maxTime: 10
+  feedbackDuration: 5
   aiManager: {fileID: 1641716176}
   playerProfile: {fileID: 1518503363}
-  feedbackText: {fileID: 112900082}
+  maxScenarios: 10
+  scenarioAnimator: {fileID: 0}
 --- !u!4 &106397549
 Transform:
   m_ObjectHideFlags: 0
@@ -573,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1239,6 +1426,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &656266715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656266716}
+  m_Layer: 5
+  m_Name: 'OptionPanel '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &656266716
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656266715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1873813365}
+  - {fileID: 1812745146}
+  - {fileID: 1916009254}
+  m_Father: {fileID: 1427529640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &934367300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.05660379, g: 0.02963689, b: 0.036838394, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1409,12 +1634,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 72373994}
-  - {fileID: 1873813365}
-  - {fileID: 1812745146}
-  - {fileID: 1916009254}
+  - {fileID: 656266716}
+  - {fileID: 112900084}
   - {fileID: 518374903}
   - {fileID: 409387447}
-  - {fileID: 112900084}
   - {fileID: 934367301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1681,13 +1904,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812745145}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1559687077}
-  m_Father: {fileID: 1427529640}
+  m_Father: {fileID: 656266716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1814,13 +2037,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873813364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 45561557}
-  m_Father: {fileID: 1427529640}
+  m_Father: {fileID: 656266716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1947,13 +2170,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916009253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 356482394}
-  m_Father: {fileID: 1427529640}
+  m_Father: {fileID: 656266716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2062,6 +2285,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1427529640}
     m_Modifications:
+    - target: {fileID: 430349685104766063, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430349685104766063, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4834449228113304200, guid: 76b3a3dab6d2c8b558eacde4f1f97d98, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2161,3 +2392,4 @@ SceneRoots:
   - {fileID: 106397549}
   - {fileID: 1641716177}
   - {fileID: 1518503364}
+  - {fileID: 43859502}

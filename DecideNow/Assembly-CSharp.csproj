@@ -63,10 +63,15 @@
     <Analyzer Include="/home/jobayer/Unity/Hub/Editor/2022.3.62f3/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/AnimatorScript.cs" />
     <Compile Include="Assets/Scripts/Scenario.cs" />
     <Compile Include="Assets/Scripts/AIManager.cs" />
+    <Compile Include="Assets/Scripts/ResultManager.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/SceneFlowManager.cs" />
     <Compile Include="Assets/Scripts/PlayerProfile.cs" />
+    <Compile Include="Assets/Scripts/ScenarioType.cs" />
+    <Compile Include="Assets/Scripts/ScenarioAnimationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

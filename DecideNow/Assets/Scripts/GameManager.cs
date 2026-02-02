@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +10,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scenarioText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI feedbackText;
 
     [Header("Scenario System")]
     public List<Scenario> scenarios;
+    private List<Scenario> remainingScenarios;
     private Scenario currentScenario;
 
     [Header("Option Texts")]
@@ -18,59 +22,123 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI optionBText;
     public TextMeshProUGUI optionCText;
 
+    [Header("UI Panels")]
+    public GameObject optionPanel;
+
     [Header("Timer Settings")]
-    public float maxTime = 10f;
+    public float maxTime = 19f;
     private float currentTime;
+    private bool canChoose = true;
 
-    [Header("AI")]
+    [Header("Feedback Settings")]
+    public float feedbackDuration = 5f;
+
+    [Header("AI & Profile")]
     public AIManager aiManager;
-    private float decisionStartTime;
+    public PlayerProfile playerProfile;
 
+    // ================= GAME DATA =================
+    private float decisionStartTime;
     private int score = 0;
 
-[Header("Player Profile")]
-public PlayerProfile playerProfile;
+    public int maxScenarios = 10;
+    private int playedScenarios = 0;
 
-[Header("Feedback UI")]
-public TextMeshProUGUI feedbackText;
+    public static int finalScore;
 
+    [Header("Animation Controller")]
+    public ScenarioAnimatorController scenarioAnimator;
 
+    // ================= UNITY =================
 
     void Start()
     {
-        LoadScenario();
+        remainingScenarios = new List<Scenario>(scenarios);
         UpdateScore();
+        LoadScenario();
     }
 
     void Update()
     {
-        UpdateTimer();
+        if (canChoose)
+            UpdateTimer();
     }
+
+    // ================= SCENARIO =================
 
     void LoadScenario()
     {
-         feedbackText.text = "";
-        currentScenario = scenarios[Random.Range(0, scenarios.Count)];
+        if (playedScenarios >= maxScenarios || remainingScenarios.Count == 0)
+        {
+            finalScore = score;
+            SceneManager.LoadScene("ResultScene");
+            return;
+        }
+
+        canChoose = true;
+        optionPanel.SetActive(true);
+        feedbackText.text = "";
+
+        int index = Random.Range(0, remainingScenarios.Count);
+        currentScenario = remainingScenarios[index];
+        remainingScenarios.RemoveAt(index);
+
+        playedScenarios++;
 
         scenarioText.text = currentScenario.scenarioText;
         optionAText.text = currentScenario.optionA;
         optionBText.text = currentScenario.optionB;
         optionCText.text = currentScenario.optionC;
 
-        // Base time from risk
-        if (currentScenario.riskLevel == 3)
-            maxTime = 6f;
-        else if (currentScenario.riskLevel == 2)
-            maxTime = 8f;
-        else
-            maxTime = 10f;
-
-        // AI adjustment
-        ApplyAIDifficulty();
-
+        ApplyTimeByRisk();
         ResetTimer();
         decisionStartTime = currentTime;
+
+        PlayScenarioAnimation();
     }
+
+    void PlayScenarioAnimation()
+    {
+        if (scenarioAnimator == null || currentScenario == null)
+            return;
+
+        switch (currentScenario.scenarioType)
+        {
+            case ScenarioType.Fire:
+                scenarioAnimator.PlayFire();
+                break;
+
+            case ScenarioType.Accident:
+                scenarioAnimator.PlayAccident();
+                break;
+
+            case ScenarioType.Surgery:
+                scenarioAnimator.PlaySurgery();
+                break;
+
+            case ScenarioType.CyberAttack:
+                scenarioAnimator.PlayCyberAttack();
+                break;
+
+            default:
+                scenarioAnimator.PlayIdle();
+                break;
+        }
+    }
+
+    void ApplyTimeByRisk()
+    {
+        switch (currentScenario.riskLevel)
+        {
+            case 3: maxTime = 15f; break; // Hard
+            case 2: maxTime = 17f; break; // Medium
+            default: maxTime = 19f; break; // Easy
+        }
+
+        ApplyAIDifficulty();
+    }
+
+    // ================= TIMER =================
 
     void UpdateTimer()
     {
@@ -81,84 +149,87 @@ public TextMeshProUGUI feedbackText;
             TimeUp();
     }
 
-    void TimeUp()
-    {
-        score -= 5;
-        UpdateScore();
-        LoadScenario();
-    }
-
     void ResetTimer()
     {
         currentTime = maxTime;
     }
 
-    public void PlayerDecision(int choice)
-{
-    if (currentTime <= 0f)
-        return;
-
-    float decisionTime = decisionStartTime - currentTime;
-    bool isCorrect = choice == currentScenario.correctOption;
-
-    if (isCorrect)
+    void TimeUp()
     {
-        score += 10;
-        ShowFeedback(true);
-    }
-    else
-    {
+        if (!canChoose) return;
+
+        canChoose = false;
+        optionPanel.SetActive(false);
+
         score -= 5;
-        ShowFeedback(false);
+        UpdateScore();
+
+        feedbackText.text = "⏱ Time's Up!\n" + currentScenario.explanation;
+        feedbackText.color = Color.yellow;
+
+        StartCoroutine(LoadNextScenario(feedbackDuration));
     }
 
-    aiManager.RecordDecision(
-        decisionTime,
-        isCorrect,
-        currentScenario.riskLevel
-    );
+    // ================= PLAYER DECISION =================
 
-    playerProfile.UpdateProfile(
-        decisionTime,
-        isCorrect,
-        currentScenario.riskLevel
-    );
-
-    UpdateScore();
-    Invoke(nameof(LoadScenario), 1.5f);
-}
-
-
-void ShowFeedback(bool success)
-{
-    if (success)
+    public void PlayerDecision(int choice)
     {
-        feedbackText.text = "✔ Correct Decision!\n" + currentScenario.explanation;
-        feedbackText.color = Color.green;
-    }
-    else
-    {
-        feedbackText.text = "✖ Wrong Decision!\n" + currentScenario.explanation;
-        feedbackText.color = Color.red;
+        if (!canChoose) return;
+
+        canChoose = false;
+        optionPanel.SetActive(false);
+
+        float decisionTime = decisionStartTime - currentTime;
+        bool isCorrect = choice == currentScenario.correctOption;
+
+        score += isCorrect ? 10 : -5;
+        UpdateScore();
+
+        ShowFeedback(isCorrect);
+
+        if (aiManager != null)
+            aiManager.RecordDecision(decisionTime, isCorrect, currentScenario.riskLevel);
+
+        if (playerProfile != null)
+            playerProfile.UpdateProfile(decisionTime, isCorrect, currentScenario.riskLevel);
+
+        StartCoroutine(LoadNextScenario(feedbackDuration));
     }
 
-    CancelInvoke();
-}
+    // ================= FEEDBACK =================
+
+    void ShowFeedback(bool success)
+    {
+        feedbackText.text =
+            (success ? "✔ Correct Decision!\n" : "✖ Wrong Decision!\n") +
+            currentScenario.explanation;
+
+        feedbackText.color = success ? Color.green : Color.red;
+    }
+
+    // ================= AI =================
 
     void ApplyAIDifficulty()
     {
+        if (aiManager == null) return;
+
         float multiplier = aiManager.GetDifficultyMultiplier();
-        maxTime = Mathf.Clamp(maxTime / multiplier, 4f, 12f);
+        maxTime = Mathf.Clamp(maxTime / multiplier, 8f, 25f);
     }
 
+    // ================= SCORE =================
+
     void UpdateScore()
-{
-    scoreText.text = "Score: " + score;
+    {
+        scoreText.text = "Score: " + score;
+        scoreText.color = score >= 0 ? Color.white : Color.red;
+    }
 
-    if (score >= 0)
-        scoreText.color = Color.white;
-    else
-        scoreText.color = Color.red;
-}
+    // ================= COROUTINE =================
 
+    IEnumerator LoadNextScenario(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        LoadScenario();
+    }
 }
