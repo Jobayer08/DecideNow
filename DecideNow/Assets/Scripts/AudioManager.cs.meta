@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fd9fa614803f769858472fccdfa4dc3d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - sfxSource: {instanceID: 0}
+  - buttonClick: {fileID: 8300000, guid: 35c02ca44a6f3f8bb832508668cd7fed, type: 3}
+  - correct: {fileID: 8300000, guid: f5928f68f98c78cc59c4642eb7e673d0, type: 3}
+  - wrong: {fileID: 8300000, guid: b5935941bdc13d2d8a23c7fc6809a1b3, type: 3}
+  - timerWarning: {fileID: 8300000, guid: 8a06078b5bf0dfe2faef14218296bdf2, type: 3}
+  - backgroundMusic: {fileID: 8300000, guid: 2c949258efd92b91998a31285730af02, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
