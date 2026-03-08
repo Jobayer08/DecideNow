@@ -1,23 +1,29 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI speedText;
+    public TextMeshProUGUI riskText;
+    public TextMeshProUGUI accuracyText;
+
+    public PlayerProfile playerProfile;
 
     void Start()
     {
+        ShowResults();
+    }
+
+    void ShowResults()
+    {
         finalScoreText.text = "Final Score: " + GameManager.finalScore;
-    }
 
-    public void PlayAgain()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
+        if (playerProfile != null)
+        {
+            speedText.text = "Speed: " + playerProfile.GetSpeed();
+            riskText.text = "Risk: " + playerProfile.GetRisk();
+            accuracyText.text = "Accuracy: " + playerProfile.GetAccuracy();
+        }
     }
 }

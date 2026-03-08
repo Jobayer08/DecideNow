@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     public AIManager aiManager;
     public PlayerProfile playerProfile;
 
-    // ================= GAME DATA =================
     private float decisionStartTime;
     private int score = 0;
 
@@ -48,8 +47,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Animation Controller")]
     public ScenarioAnimatorController scenarioAnimator;
-
-    // ================= UNITY =================
 
     void Start()
     {
@@ -130,9 +127,9 @@ public class GameManager : MonoBehaviour
     {
         switch (currentScenario.riskLevel)
         {
-            case 3: maxTime = 15f; break; // Hard
-            case 2: maxTime = 17f; break; // Medium
-            default: maxTime = 19f; break; // Easy
+            case 3: maxTime = 15f; break;
+            case 2: maxTime = 17f; break;
+            default: maxTime = 19f; break;
         }
 
         ApplyAIDifficulty();
@@ -145,8 +142,15 @@ public class GameManager : MonoBehaviour
         currentTime -= Time.deltaTime;
         timerText.text = "Time: " + Mathf.Ceil(currentTime);
 
+        if (Mathf.Ceil(currentTime) == 3)
+        {
+            AudioManager.Instance.PlayTimerWarning();
+        }
+
         if (currentTime <= 0f)
+        {
             TimeUp();
+        }
     }
 
     void ResetTimer()
@@ -179,6 +183,8 @@ public class GameManager : MonoBehaviour
         canChoose = false;
         optionPanel.SetActive(false);
 
+        AudioManager.Instance.PlayButtonClick();
+
         float decisionTime = decisionStartTime - currentTime;
         bool isCorrect = choice == currentScenario.correctOption;
 
@@ -200,6 +206,11 @@ public class GameManager : MonoBehaviour
 
     void ShowFeedback(bool success)
     {
+        if (success)
+            AudioManager.Instance.PlayCorrect();
+        else
+            AudioManager.Instance.PlayWrong();
+
         feedbackText.text =
             (success ? "✔ Correct Decision!\n" : "✖ Wrong Decision!\n") +
             currentScenario.explanation;

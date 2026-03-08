@@ -4,11 +4,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Sources")]
+    [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
-    [Header("Clips")]
+    [Header("Audio Clips")]
     public AudioClip buttonClick;
     public AudioClip correct;
     public AudioClip wrong;
@@ -23,7 +23,9 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     void Start()
@@ -35,12 +37,26 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.clip = backgroundMusic;
         musicSource.loop = true;
-        musicSource.volume = 0.3f;
         musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlayButtonClick()
     {
-        sfxSource.PlayOneShot(clip);
+        sfxSource.PlayOneShot(buttonClick);
+    }
+
+    public void PlayCorrect()
+    {
+        sfxSource.PlayOneShot(correct);
+    }
+
+    public void PlayWrong()
+    {
+        sfxSource.PlayOneShot(wrong);
+    }
+
+    public void PlayTimerWarning()
+    {
+        sfxSource.PlayOneShot(timerWarning);
     }
 }
